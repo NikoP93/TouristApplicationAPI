@@ -3,6 +3,7 @@ package com.example.touristguideapi.service;
 import com.example.touristguideapi.model.TouristAttraction;
 import com.example.touristguideapi.repository.TouristRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -33,8 +34,8 @@ public class TouristServices {
         return updatedTouristAttraction;
     }
 
-    public TouristAttraction deleteTouristAttraction(TouristAttraction touristAttraction) {
-        TouristAttraction deletedTouristAttraction = repository.deleteTouristAttraction(touristAttraction);
+    public TouristAttraction deleteTouristAttraction(String name) {
+        TouristAttraction deletedTouristAttraction = repository.deleteTouristAttraction(name);
         if (deletedTouristAttraction != null) {
             return deletedTouristAttraction;
         }

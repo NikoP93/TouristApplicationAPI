@@ -36,33 +36,23 @@ public class TouristRepository {
     }
 
     public TouristAttraction updateTouristAttraction(TouristAttraction touristAttraction){
-        int i = 0;
-        while (i < touristAttractionList.size()){
-            if (touristAttractionList.get(i).getName().equalsIgnoreCase(touristAttraction.getName())){
-                touristAttractionList.set(i,touristAttraction);
-                return touristAttraction;
+        for(TouristAttraction ta: touristAttractionList){
+            if (ta.getName().equalsIgnoreCase(touristAttraction.getName())){
+                ta.setDescription(touristAttraction.getDescription());
+                return ta;
             }
-            i++;
         }
         return null;
     }
 
-    public TouristAttraction deleteTouristAttraction(TouristAttraction touristAttraction){
-        int foundIndex = -1;
-        TouristAttraction returnTouristAttraction = new TouristAttraction("Mistake", "Attraction, not found");
-
-        for (int i = 0; i < touristAttractionList.size() ; i++) {
-            if(touristAttractionList.get(i).getName().equalsIgnoreCase(touristAttraction.getName())){
-                foundIndex = i;
-                break;
+    public TouristAttraction deleteTouristAttraction(String name){
+        for (TouristAttraction ta: touristAttractionList){
+            if(ta.getName().equalsIgnoreCase(name)){
+                touristAttractionList.remove(ta);
+                return ta;
             }
         }
-        if (foundIndex != -1){
-            returnTouristAttraction = touristAttractionList.get(foundIndex);
-            touristAttractionList.remove(foundIndex);
-        }
-
-        return returnTouristAttraction;
+        return null;
     }
 
 }

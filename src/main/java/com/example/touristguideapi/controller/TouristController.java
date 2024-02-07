@@ -50,9 +50,9 @@ public class TouristController {
             return new ResponseEntity<>(new TouristAttraction("Fail", "Tourist Attraction not found"),HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction){
-        TouristAttraction deletedTouristAttraction = touristService.deleteTouristAttraction(touristAttraction);
+    @GetMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name){
+        TouristAttraction deletedTouristAttraction = touristService.deleteTouristAttraction(name);
         return new ResponseEntity<>(deletedTouristAttraction,HttpStatus.OK);
     }
 
