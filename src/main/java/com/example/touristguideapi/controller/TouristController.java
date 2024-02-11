@@ -47,7 +47,7 @@ public class TouristController {
         if (updatedTouristAttraction != null)
         return new ResponseEntity<>(updatedTouristAttraction,HttpStatus.OK);
         else
-            return new ResponseEntity<>(new TouristAttraction("Fail", "Tourist Attraction not found"),HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(new TouristAttraction("Error", "Tourist Attraction not found"),HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/delete/{name}")
